@@ -8,5 +8,8 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "commander": "^3.0.2"
-  }
+  },
+  "files": [
+    "src/"
+  ]
 }
