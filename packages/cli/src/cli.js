@@ -1,6 +1,6 @@
 'use strict'
 import arg from 'arg'
-
+import inquirer from 'inquirer'
 function parseArgumentsIntoOptions(rawArgs) {
     const args = arg(
         {
@@ -52,9 +52,17 @@ async function promptForMissingOptions(options) {
             default: false
         })
     }
+
+    const answers = await inquirer.prompt(questions)
+    return {
+        ...options,
+        template: options.template || answers.template,
+        git: options.git || answers.git
+    }
 }
 
 export function cli(args) {
     let options = parseArgumentsIntoOptions(args)
+    options = await promptForMissingOptions(options)
     console.log(options)
 }
