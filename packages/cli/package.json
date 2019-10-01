@@ -2,7 +2,7 @@
   "name": "naboo-cli",
   "version": "1.0.1",
   "description": "A cli to scaffold a component library",
-  "main": "index.js",
+  "main": "./src/index.js",
   "license": "MIT",
   "private": false,
   "dependencies": {
@@ -14,5 +14,6 @@
   "files": [
     "src/",
     "bin/"
-  ]
+  ],
+  "bin": "bin/create-project"
 }
