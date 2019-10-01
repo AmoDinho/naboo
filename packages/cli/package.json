@@ -2,7 +2,7 @@
   "name": "naboo-cli",
   "version": "1.0.3",
   "description": "A cli to scaffold a component library",
-  "main": "./src/index.js",
+  "main": "./src/cli.js",
   "license": "MIT",
   "private": false,
   "dependencies": {
