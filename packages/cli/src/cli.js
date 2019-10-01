@@ -1,16 +1,25 @@
 'use strict'
+import arg from 'arg'
 
-const program = require('commander')
-exports.cli = () => {
+function parseArgumentsIntoOptions(rawArgs) {
+    const args = arg(
+        {
+            '--git': Boolean,
+            '--yes': Boolean,
+            '--install': Boolean,
+            '-g': '--git',
+            '-y': '--yes',
+            '-i': '--install'
+        },
+        {
+            argv: rawArgs.slice(2),
+        }
+    )
 
-    program
-        .option('-r, --react')
-        .option('-v, --vue')
-
-    program.parse(process.argv)
-
-    if (program.react) program.action(console.log('install react lib'))
-    if (program.vue) program.action(console.log('install vue lib'))
-
-
+    return {
+        skipPropmpts: args['--yes'] || false,
+        git: args['--git'] || false,
+        template: args._[0],
+        runInstall: args['--install'] || false
+    }
 }
