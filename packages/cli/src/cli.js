@@ -24,6 +24,36 @@ function parseArgumentsIntoOptions(rawArgs) {
     }
 }
 
+async function promptForMissingOptions(options) {
+    const defaultTemplate = 'VueJS'
+    if (options.skipPropmpts) {
+        return {
+            ...options,
+            template: options.template || defaultTemplate,
+        }
+    }
+
+    const questions = []
+    if (!options.template) {
+        questions.push({
+            type: 'list',
+            name: 'template',
+            message: 'Which framework would you like to use?',
+            choices: ['VueJS', 'ReactJS'],
+            default: defaultTemplate
+        })
+    }
+
+    if (!options.git) {
+        questions.push({
+            type: 'confirm',
+            name: 'git',
+            message: 'Initialize a git repo?',
+            default: false
+        })
+    }
+}
+
 export function cli(args) {
     let options = parseArgumentsIntoOptions(args)
     console.log(options)
