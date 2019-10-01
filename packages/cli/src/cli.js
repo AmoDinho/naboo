@@ -23,3 +23,8 @@ function parseArgumentsIntoOptions(rawArgs) {
         runInstall: args['--install'] || false
     }
 }
+
+export function cli(args) {
+    let options = parseArgumentsIntoOptions(args)
+    console.log(options)
+}
