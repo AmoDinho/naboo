@@ -1,6 +1,7 @@
 'use strict'
 import arg from 'arg'
 import inquirer from 'inquirer'
+//This fucntion allows us give the user arguments to use. 
 function parseArgumentsIntoOptions(rawArgs) {
     const args = arg(
         {
@@ -24,6 +25,9 @@ function parseArgumentsIntoOptions(rawArgs) {
     }
 }
 
+//here we are getting the missing options 
+//while asking them questions to choose
+//their framework of choice
 async function promptForMissingOptions(options) {
     const defaultTemplate = 'VueJS'
     if (options.skipPropmpts) {
@@ -61,6 +65,7 @@ async function promptForMissingOptions(options) {
     }
 }
 
+//this is an exported function that is triggered to do everything
 export async function cli(args) {
     let options = parseArgumentsIntoOptions(args)
     options = await promptForMissingOptions(options)
