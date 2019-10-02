@@ -1,6 +1,7 @@
 'use strict'
 import arg from 'arg'
 import inquirer from 'inquirer'
+import { createProject } from './main'
 //This fucntion allows us give the user arguments to use. 
 function parseArgumentsIntoOptions(rawArgs) {
     const args = arg(
@@ -69,5 +70,6 @@ async function promptForMissingOptions(options) {
 export async function cli(args) {
     let options = parseArgumentsIntoOptions(args)
     options = await promptForMissingOptions(options)
+    await createProject(options)
     console.log(options)
 }
