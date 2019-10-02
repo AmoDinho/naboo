@@ -30,7 +30,7 @@ function parseArgumentsIntoOptions(rawArgs) {
 //while asking them questions to choose
 //their framework of choice
 async function promptForMissingOptions(options) {
-    const defaultTemplate = 'VueJS'
+    const defaultTemplate = 'vue'
     if (options.skipPropmpts) {
         return {
             ...options,
@@ -44,7 +44,7 @@ async function promptForMissingOptions(options) {
             type: 'list',
             name: 'template',
             message: 'Which framework would you like to use?',
-            choices: ['VueJS', 'ReactJS'],
+            choices: ['vue', 'react-lib'],
             default: defaultTemplate
         })
     }

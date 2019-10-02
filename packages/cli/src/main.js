@@ -22,11 +22,12 @@ export async function createProject(options) {
     const reactURL = 'https://github.com/AmoDinho/naboo/tree/master/packages/react-lib'
     const vueURL = 'https://github.com/AmoDinho/naboo/tree/master/packages/vue'
 
-    const choice = options.template === 'VueJS' ? vueURL : reactURL
+    const choice = options.template === 'vue' ? vueURL : reactURL
 
+    console.log(choice)
     const templateDir = path.resolve(
         new URL(import.meta.url).pathname,
-        choice,
+        'https://github.com/AmoDinho/naboo/tree/master/packages',
         options.template
     )
 
